@@ -52,9 +52,9 @@ int interpret(char fileName[], int debugMode) {
         if (debugMode == 1) {
         printf("word startswith $(\n");
         }
-	    i3 = 0;
+	i3 = 0;
         memset(varAskedName, 0, sizeof(varAskedName));
-	    for (i2 = 2; i2 < strlen(lineList[i]) - 3; i2++) {
+	for (i2 = 2; i2 < strlen(lineList[i]) - 3; i2++) {
         if (debugMode == 1) {
         printf("lineList[i][i2] : %c\n",lineList[i][i2]);
         }
@@ -69,14 +69,19 @@ int interpret(char fileName[], int debugMode) {
             strcpy(lineList[i], varArray[posVar].value);
             memset(line2, 0, sizeof(line2));
             i4 = 0;
-            for (i2 = 0; i2 < sizeLineList; i2++) {
+            for (i2 = 0; i2 <= sizeLineList; i2++) {
                 for (i3 = 0; i3 < strlen(lineList[i2]); i3++) {
                     line2[i4] = lineList[i2][i3];
                     i4++;
                 }
-                line2[i4 + 1] = " "[0];
-                i4++;
+		//i4++;
+                line2[strlen(lineList[i2]) + 1] = " "[0];
+                //i4++;
+	        //i4++;
             }
+	    if (debugMode == 1) {
+	    printf("line2 after changing variable : %s\n", line2);
+	    }
         }
         if (debugMode == 1) {
             printf("lineList[i]: %s\n", lineList[i]);
