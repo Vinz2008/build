@@ -108,8 +108,17 @@ int interpret(char fileName[], int debugMode) {
             printf("line2 before running command : %s\n", line2);
         }
         commandReadPtr = popen(line2, "r");
+	if (debugMode == 1) {
+	printf("process ptr created\n");
+	}
         memset(output, 0, sizeof(output));
+	if (debugMode == 1) {
+        printf("empty ouput\n");
+        }
         fscanf(commandReadPtr,"%s",output);
+	if (debugMode == 1) {
+        printf("launch process\n");
+        }
         if (debugMode == 1) {
             printf("---REAL OUTPUT---\n");
         }
