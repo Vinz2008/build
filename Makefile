@@ -23,17 +23,6 @@ install:
 	cp build /usr/bin
 
 
-test:
-	make build-test
-	
-build-test:
-	@mkdir buildDir
-	@$(CC) -c -g interpret.c -o buildDir/intepret.o
-	@$(CC) -c -g libs/startswith.c -o buildDir/startswith.o
-	@$(CC) -c -g tests/test.c -o buildDir/test.o
-	@$(CC) buildDir/intepret.o buildDir/startswith.o buildDir/test.o -o testsBin
-	@rm -rf buildDir
-	@./testsBin
 
 clean:
 	rm -rf buildDir
