@@ -16,9 +16,10 @@ int interpret(char fileName[], int debugMode) {
     int i3;
     int i4;
     int posVar;
-    char varAskedName[10];
+    char varAskedName[15];
     FILE *fptr;
-    char line[40];
+    char line[100];
+    char lineList[300][300];
     struct Variable varArray[10];
     int nbVariable = 0;
     fptr = fopen(fileName, "r");
@@ -28,10 +29,9 @@ int interpret(char fileName[], int debugMode) {
         exit(1);
     }
      while (fgets(line,150, fptr)) {
-         char line2[40];
+         char line2[100];
         strcpy(line2, line);
         int c = 0;
-         char lineList[15][15];
          char output[50];
          int sizeLineList = 0;
          char *pch = strtok(line," ");
@@ -54,7 +54,7 @@ int interpret(char fileName[], int debugMode) {
         }
 	i3 = 0;
         memset(varAskedName, 0, sizeof(varAskedName));
-	for (i2 = 2; i2 < strlen(lineList[i])/* - 3*/; i2++) {
+	for (i2 = 2; i2 < strlen(lineList[i]) - 1; i2++) {
         if (debugMode == 1) {
         printf("lineList[%i][%i] : %c\n",i,i2,lineList[i][i2]);
         }
@@ -70,9 +70,10 @@ int interpret(char fileName[], int debugMode) {
             memset(line2, 0, sizeof(line2));
             i4 = 0;
 	    if (debugMode == 1) {
-                printf("replacing var :\n");
-            }
-            for (i2 = 0; i2 <= sizeLineList; i2++) {
+            printf("replacing var :\n");
+            printf("sizeLineList : %i\n",sizeLineList);
+        }
+            for (i2 = 0; i2 < sizeLineList; i2++) {
                 for (i3 = 0; i3 < strlen(lineList[i2]); i3++) {
 		    if (debugMode == 1) {
 		    printf("lineList[%i][%i] : %c\n",i2,i3,lineList[i2][i3]);
@@ -136,5 +137,6 @@ int interpret(char fileName[], int debugMode) {
             printf("end of line\n");
         }
      }
+     memset(lineList, 0, sizeof(lineList));
     return 0;
 }
