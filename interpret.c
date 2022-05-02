@@ -3,6 +3,7 @@
 #include <string.h>
 #include "interpret.h"
 #include "libs/startswith.h"
+#include "libs/color.h"
 
 struct Variable {
 char name[10];
@@ -25,7 +26,7 @@ int interpret(char fileName[], int debugMode) {
     fptr = fopen(fileName, "r");
     if (fptr == NULL)
     {
-        printf("Error! The file is empty\n");   
+        printf(BRED "Error! The Buildfile doesn't exist or is empty\n" reset);   
         exit(1);
     }
      while (fgets(line,150, fptr)) {
