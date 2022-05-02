@@ -14,9 +14,6 @@ int main(int argc,char* argv[]){
     char inputFilename[15];
     int isDebug = 0;
     int fileNameFound = 0;
-
-        
-        strcpy(argument, argv[1]);
         for (i=ARGUMENT_START;i<argc;i++) 
         {
             //printf("argv[%i] : %s\n",i, argv[i]);
