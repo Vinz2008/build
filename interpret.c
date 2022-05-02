@@ -18,8 +18,8 @@ int interpret(char fileName[], int debugMode) {
     int posVar;
     char varAskedName[15];
     FILE *fptr;
-    char line[100];
-    char lineList[300][300];
+    char line[1000];
+    char lineList[500][400];
     struct Variable varArray[10];
     int nbVariable = 0;
     fptr = fopen(fileName, "r");
@@ -29,7 +29,7 @@ int interpret(char fileName[], int debugMode) {
         exit(1);
     }
      while (fgets(line,150, fptr)) {
-         char line2[100];
+         char line2[1000];
         strcpy(line2, line);
         int c = 0;
          char output[50];
