@@ -78,13 +78,17 @@ int interpret(char fileName[], int debugMode) {
                 for (i3 = 0; i3 < strlen(lineList[i2]); i3++) {
 		    if (debugMode == 1) {
 		    printf("lineList[%i][%i] : %c\n",i2,i3,lineList[i2][i3]);
+            //printf("line2[%i] : %c\n", i4, lineList[i2][i3]);
 		    }
+                    if (i2 > 0 || i3 < strlen(lineList[i2]) - 1){
                     line2[i4] = lineList[i2][i3];
+                    //printf("line2 : %s\n", line2);
                     i4++;
+                    }
                 }
 		//i4++;
-                line2[strlen(lineList[i2]) + 1] = ' ';
-                //i4++;
+                line2[i4] = ' ';
+                i4++;
             }
 	    if (debugMode == 1) {
 	    printf("line2 after changing variable : %s\n", line2);
