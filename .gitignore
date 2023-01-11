@@ -4,3 +4,4 @@ build
 build-bootstrapped
 build-bootstrapp
 testsBin
+*.o

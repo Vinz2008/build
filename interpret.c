@@ -29,25 +29,24 @@ int interpret(char fileName[], int debugMode) {
         printf(BRED "Error! The Buildfile doesn't exist or is empty\n" reset);   
         exit(1);
     }
-     while (fgets(line,150, fptr)) {
-         char line2[1000];
+    while (fgets(line,150, fptr)) {
+        char line2[1000];
         strcpy(line2, line);
         int c = 0;
-         char output[50];
-         int sizeLineList = 0;
-         char *pch = strtok(line," ");
-        while (pch != NULL)
-	    {
+        char output[50];
+        int sizeLineList = 0;
+        char *pch = strtok(line," ");
+        while (pch != NULL){
             sizeLineList++;
-             strcpy(lineList[c], pch);
+            strcpy(lineList[c], pch);
             for (i = 0; i < strlen(lineList[c]); i++) {
-           if (debugMode == 1) {
+            if (debugMode == 1) {
             printf("char : %c\n",lineList[c][i]);
-           }
-        }
-        pch = strtok(NULL, " ");
-	    c++;
-        }
+            }
+            }
+            pch = strtok(NULL, " ");
+	        c++;
+            }
 	for (i = 0; i < sizeLineList; i++) {
         if (startswith("$(",lineList[i])) {
         if (debugMode == 1) {

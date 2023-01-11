@@ -1,20 +1,19 @@
 CC=gcc
-all:
-	mkdir buildDir
-	$(CC) -c -g interpret.c -o buildDir/intepret.o
-	$(CC) -c -g main.c -o buildDir/main.o
-	$(CC) -c -g libs/startswith.c -o buildDir/startswith.o
-	$(CC) buildDir/main.o buildDir/intepret.o buildDir/startswith.o -o build
-	rm -rf buildDir
+CFLAGS=-Wall -c -g
 
-windows:
-	mkdir buildDir
-	$(CC) -c -g interpret.c -o buildDir/intepret.o
-	$(CC) -c -g main.c -o buildDir/main.o
-	$(CC) -c -g libs/startswith.c -o buildDir/startswith.o
-	$(CC) buildDir/main.o buildDir/intepret.o buildDir/startswith.o -o build.exe
-	rmdir .\buildDir\ /s /q
+OBJS=\
+libs/startswith.o \
+interpret.o \
+lexer.o \
+main.o \
 
+all: build
+
+build: $(OBJS)
+	$(CC) -o $@ $^
+
+%.o:%.c
+	$(CC) $(CFLAGS) -o $@ $^
 
 run:
 	./build -d
@@ -22,9 +21,6 @@ run:
 install:
 	cp build /usr/bin
 
-
-
 clean:
 	rm -rf buildDir
-	rm -rf build-bootstrapped
 	rm -f testsBin build
