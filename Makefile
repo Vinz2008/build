@@ -1,12 +1,8 @@
 CC=gcc
 CFLAGS=-Wall -c -g
 
-OBJS=\
-libs/startswith.o \
-interpret.o \
-lexer.o \
-main.o \
-
+SRCS := $(wildcard *.c)
+OBJS = $(patsubst %.c,%.o,$(SRCS))
 all: build
 
 build: $(OBJS)
@@ -22,5 +18,4 @@ install:
 	cp build /usr/bin
 
 clean:
-	rm -rf buildDir
-	rm -f testsBin build
+	rm -rf buildDir testsBin build *.o

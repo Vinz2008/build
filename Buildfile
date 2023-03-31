@@ -1,5 +1,5 @@
 var CC = gcc
--all
+all:
     echo hello
     $(CC) -v
     rm -rf build-bootstrapped/

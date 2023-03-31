@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "interpret.h"
-#include "libs/startswith.h"
+#include "startswith.h"
 #include "libs/color.h"
 
 struct Variable {

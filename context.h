@@ -14,3 +14,9 @@ struct variable_array {
 typedef struct {
     struct variable_array* array;
 } context_t;
+
+context_t *create_context();
+
+void addVariable(struct variable var, context_t* context);
+
+void destroyContext(context_t* context);
